@@ -29,5 +29,5 @@ export const useModalClosure = ({
 			document.removeEventListener('keydown', closeOnEscapeKey);
 			document.removeEventListener('mousedown', closeOnOutsideClick);
 		};
-	});
+	}, [isOpen]);
 };

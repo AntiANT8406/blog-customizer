@@ -1,7 +1,7 @@
 import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import { useState, useRef } from 'react';
-import { useModalClosure } from 'src/hooks/useModalClosure';
+import { useModalClosure } from './hooks/useModalClosure';
 import clsx from 'clsx';
 
 import styles from './ArticleParamsForm.module.scss';
