@@ -32,7 +32,7 @@ export const ArticleParamsForm = ({
 }: TArticleParamsForm) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [formState, setFormState] = useState(articleState);
-	const closureRef = useRef(null); // TODO: посмотреть как сделано в других компонентах
+	const closureRef = useRef(null);
 	useModalClosure({ ref: closureRef, isOpen, close: () => setIsOpen(false) });
 	return (
 		<>
@@ -45,7 +45,12 @@ export const ArticleParamsForm = ({
 			<aside
 				className={clsx(styles.container, { [styles.container_open]: isOpen })}
 				ref={closureRef}>
-				<form className={styles.form}>
+				<form
+					className={styles.form}
+					onSubmit={(e) => {
+						e.preventDefault();
+						setArticleState({ ...formState });
+					}}>
 					<Text as={'h2'} size={31} weight={800} uppercase>
 						Задайте параметры
 					</Text>
@@ -96,12 +101,7 @@ export const ArticleParamsForm = ({
 								setArticleState({ ...defaultArticleState });
 							}}
 						/>
-						<Button
-							title='Применить'
-							htmlType='submit'
-							type='apply'
-							onClick={() => setArticleState({ ...formState })}
-						/>
+						<Button title='Применить' htmlType='submit' type='apply' />
 					</div>
 				</form>
 			</aside>
