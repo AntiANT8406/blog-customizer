@@ -12,6 +12,7 @@ export const useModalClosure = ({
 	close,
 }: IUseModalClosure): void => {
 	useEffect(() => {
+		if (!isOpen) return;
 		const closeOnEscapeKey = (e: KeyboardEvent) => {
 			if (e.key === 'Escape' && isOpen) {
 				close();
