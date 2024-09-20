@@ -6,10 +6,13 @@ import { ArrowButton } from 'components/arrow-button';
 import { Button } from 'components/button';
 import { Text } from 'components/text';
 import { Select } from 'components/select';
+import { RadioGroup } from 'components/radio-group';
+import { Separator } from 'components/separator';
 
 import {
 	ArticleStateType,
 	fontFamilyOptions,
+	fontSizeOptions,
 	fontColors,
 	backgroundColors,
 	contentWidthArr,
@@ -52,19 +55,31 @@ export const ArticleParamsForm = ({
 						onChange={(option) =>
 							setFormState({ ...formState, fontFamilyOption: option })
 						}></Select>
+					<RadioGroup
+						name='Размер шрифта'
+						title='Размер шрифта'
+						options={fontSizeOptions}
+						selected={formState.fontSizeOption}
+						onChange={(option) =>
+							setFormState({ ...formState, fontSizeOption: option })
+						}></RadioGroup>
 					<Select
+						title='цвет шрифта'
 						options={fontColors}
 						selected={formState.fontColor}
 						onChange={(option) =>
 							setFormState({ ...formState, fontColor: option })
 						}></Select>
+					<Separator />
 					<Select
+						title='цвет фона'
 						options={backgroundColors}
 						selected={formState.backgroundColor}
 						onChange={(option) =>
 							setFormState({ ...formState, backgroundColor: option })
 						}></Select>
 					<Select
+						title='ширина контента'
 						options={contentWidthArr}
 						selected={formState.contentWidth}
 						onChange={(option) =>
