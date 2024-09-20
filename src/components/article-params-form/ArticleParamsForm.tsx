@@ -10,6 +10,9 @@ import { Select } from 'components/select';
 import {
 	ArticleStateType,
 	fontFamilyOptions,
+	fontColors,
+	backgroundColors,
+	contentWidthArr,
 	defaultArticleState,
 } from 'src/constants/articleProps';
 
@@ -49,12 +52,34 @@ export const ArticleParamsForm = ({
 						onChange={(option) =>
 							setFormState({ ...formState, fontFamilyOption: option })
 						}></Select>
+					<Select
+						options={fontColors}
+						selected={formState.fontColor}
+						onChange={(option) =>
+							setFormState({ ...formState, fontColor: option })
+						}></Select>
+					<Select
+						options={backgroundColors}
+						selected={formState.backgroundColor}
+						onChange={(option) =>
+							setFormState({ ...formState, backgroundColor: option })
+						}></Select>
+					<Select
+						options={contentWidthArr}
+						selected={formState.contentWidth}
+						onChange={(option) =>
+							setFormState({ ...formState, contentWidth: option })
+						}
+					/>
 					<div className={styles.bottomContainer}>
 						<Button
 							title='Сбросить'
 							htmlType='reset'
 							type='clear'
-							onClick={() => setFormState({ ...defaultArticleState })}
+							onClick={() => {
+								setFormState({ ...defaultArticleState });
+								setArticleState({ ...defaultArticleState });
+							}}
 						/>
 						<Button
 							title='Применить'
