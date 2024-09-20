@@ -9,7 +9,7 @@ import styles from 'src/styles/index.module.scss';
 export const App = () => {
 	const [articleState, setArticleState] = useState(defaultArticleState);
 	return (
-		<div
+		<main
 			className={styles.main}
 			style={
 				{
@@ -25,6 +25,6 @@ export const App = () => {
 				setArticleState={setArticleState}
 			/>
 			<Article />
-		</div>
+		</main>
 	);
 };

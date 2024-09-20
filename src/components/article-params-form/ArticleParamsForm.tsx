@@ -30,20 +30,26 @@ export const ArticleParamsForm = ({
 	articleState,
 	setArticleState,
 }: TArticleParamsForm) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [formState, setFormState] = useState(articleState);
 	const closureRef = useRef(null);
-	useModalClosure({ ref: closureRef, isOpen, close: () => setIsOpen(false) });
+	useModalClosure({
+		ref: closureRef,
+		isOpen: isMenuOpen,
+		close: () => setIsMenuOpen(false),
+	});
 	return (
 		<>
 			<ArrowButton
-				isOpen={isOpen}
+				isOpen={isMenuOpen}
 				onClick={() => {
-					setIsOpen(!isOpen);
+					setIsMenuOpen(!isMenuOpen);
 				}}
 			/>
 			<aside
-				className={clsx(styles.container, { [styles.container_open]: isOpen })}
+				className={clsx(styles.container, {
+					[styles.container_open]: isMenuOpen,
+				})}
 				ref={closureRef}>
 				<form
 					className={styles.form}
