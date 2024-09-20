@@ -10,21 +10,23 @@ import { Select } from 'components/select';
 import {
 	ArticleStateType,
 	fontFamilyOptions,
+	defaultArticleState,
 } from 'src/constants/articleProps';
 
 import { useModalClosure } from './hooks/useModalClosure';
 
 type TArticleParamsForm = {
-	formState: ArticleStateType;
-	setFormState: (formState: ArticleStateType) => void;
+	articleState: ArticleStateType;
+	setArticleState: (formState: ArticleStateType) => void;
 };
 
 export const ArticleParamsForm = ({
-	formState,
-	setFormState,
+	articleState,
+	setArticleState,
 }: TArticleParamsForm) => {
 	const [isOpen, setIsOpen] = useState(false);
-	const closureRef = useRef(null);
+	const [formState, setFormState] = useState(articleState);
+	const closureRef = useRef(null); // TODO: посмотреть как сделано в других компонентах
 	useModalClosure({ ref: closureRef, isOpen, close: () => setIsOpen(false) });
 	return (
 		<>
@@ -48,8 +50,18 @@ export const ArticleParamsForm = ({
 							setFormState({ ...formState, fontFamilyOption: option })
 						}></Select>
 					<div className={styles.bottomContainer}>
-						<Button title='Сбросить' htmlType='reset' type='clear' />
-						<Button title='Применить' htmlType='submit' type='apply' />
+						<Button
+							title='Сбросить'
+							htmlType='reset'
+							type='clear'
+							onClick={() => setFormState({ ...defaultArticleState })}
+						/>
+						<Button
+							title='Применить'
+							htmlType='submit'
+							type='apply'
+							onClick={() => setArticleState({ ...formState })}
+						/>
 					</div>
 				</form>
 			</aside>

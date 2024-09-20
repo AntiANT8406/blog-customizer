@@ -27,8 +27,8 @@ const App = () => {
 				} as CSSProperties
 			}>
 			<ArticleParamsForm
-				formState={currentFormState}
-				setFormState={setCurrentFormState}
+				articleState={currentFormState}
+				setArticleState={setCurrentFormState}
 			/>
 			<Article />
 		</div>
